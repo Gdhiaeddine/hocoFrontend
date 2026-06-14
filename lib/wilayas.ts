@@ -1,0 +1,71 @@
+export type Wilaya = {
+  code: string
+  name: string
+  homeFee: number
+  deskFee: number
+}
+
+export const wilayas: Wilaya[] = [
+  { code: "01", name: "01 - Adrar", homeFee: 1000, deskFee: 800 },
+  { code: "02", name: "02 - Chlef", homeFee: 600, deskFee: 500 },
+  { code: "03", name: "03 - Laghouat", homeFee: 700, deskFee: 600 },
+  { code: "04", name: "04 - Oum El Bouaghi", homeFee: 650, deskFee: 500 },
+  { code: "05", name: "05 - Batna", homeFee: 600, deskFee: 500 },
+  { code: "06", name: "06 - Béjaïa", homeFee: 600, deskFee: 500 },
+  { code: "07", name: "07 - Biskra", homeFee: 700, deskFee: 600 },
+  { code: "08", name: "08 - Béchar", homeFee: 900, deskFee: 750 },
+  { code: "09", name: "09 - Blida", homeFee: 500, deskFee: 400 },
+  { code: "10", name: "10 - Bouira", homeFee: 550, deskFee: 450 },
+  { code: "11", name: "11 - Tamanrasset", homeFee: 1200, deskFee: 950 },
+  { code: "12", name: "12 - Tébessa", homeFee: 700, deskFee: 550 },
+  { code: "13", name: "13 - Tlemcen", homeFee: 700, deskFee: 550 },
+  { code: "14", name: "14 - Tiaret", homeFee: 700, deskFee: 550 },
+  { code: "15", name: "15 - Tizi Ouzou", homeFee: 550, deskFee: 450 },
+  { code: "16", name: "16 - Alger", homeFee: 400, deskFee: 300 },
+  { code: "17", name: "17 - Djelfa", homeFee: 700, deskFee: 550 },
+  { code: "18", name: "18 - Jijel", homeFee: 600, deskFee: 500 },
+  { code: "19", name: "19 - Sétif", homeFee: 600, deskFee: 500 },
+  { code: "20", name: "20 - Saïda", homeFee: 700, deskFee: 550 },
+  { code: "21", name: "21 - Skikda", homeFee: 650, deskFee: 500 },
+  { code: "22", name: "22 - Sidi Bel Abbès", homeFee: 700, deskFee: 550 },
+  { code: "23", name: "23 - Annaba", homeFee: 600, deskFee: 500 },
+  { code: "24", name: "24 - Guelma", homeFee: 650, deskFee: 500 },
+  { code: "25", name: "25 - Constantine", homeFee: 600, deskFee: 500 },
+  { code: "26", name: "26 - Médéa", homeFee: 550, deskFee: 450 },
+  { code: "27", name: "27 - Mostaganem", homeFee: 650, deskFee: 500 },
+  { code: "28", name: "28 - M'Sila", homeFee: 650, deskFee: 500 },
+  { code: "29", name: "29 - Mascara", homeFee: 700, deskFee: 550 },
+  { code: "30", name: "30 - Ouargla", homeFee: 850, deskFee: 700 },
+  { code: "31", name: "31 - Oran", homeFee: 600, deskFee: 500 },
+  { code: "32", name: "32 - El Bayadh", homeFee: 800, deskFee: 650 },
+  { code: "33", name: "33 - Illizi", homeFee: 1200, deskFee: 950 },
+  { code: "34", name: "34 - Bordj Bou Arréridj", homeFee: 600, deskFee: 500 },
+  { code: "35", name: "35 - Boumerdès", homeFee: 500, deskFee: 400 },
+  { code: "36", name: "36 - El Tarf", homeFee: 700, deskFee: 550 },
+  { code: "37", name: "37 - Tindouf", homeFee: 1200, deskFee: 950 },
+  { code: "38", name: "38 - Tissemsilt", homeFee: 700, deskFee: 550 },
+  { code: "39", name: "39 - El Oued", homeFee: 800, deskFee: 650 },
+  { code: "40", name: "40 - Khenchela", homeFee: 700, deskFee: 550 },
+  { code: "41", name: "41 - Souk Ahras", homeFee: 700, deskFee: 550 },
+  { code: "42", name: "42 - Tipaza", homeFee: 500, deskFee: 400 },
+  { code: "43", name: "43 - Mila", homeFee: 650, deskFee: 500 },
+  { code: "44", name: "44 - Aïn Defla", homeFee: 600, deskFee: 450 },
+  { code: "45", name: "45 - Naâma", homeFee: 800, deskFee: 650 },
+  { code: "46", name: "46 - Aïn Témouchent", homeFee: 700, deskFee: 550 },
+  { code: "47", name: "47 - Ghardaïa", homeFee: 800, deskFee: 650 },
+  { code: "48", name: "48 - Relizane", homeFee: 700, deskFee: 550 },
+  { code: "49", name: "49 - El M'Ghair", homeFee: 800, deskFee: 650 },
+  { code: "50", name: "50 - El Meniaa", homeFee: 900, deskFee: 750 },
+  { code: "51", name: "51 - Ouled Djellal", homeFee: 700, deskFee: 600 },
+  { code: "52", name: "52 - Bordj Baji Mokhtar", homeFee: 1200, deskFee: 950 },
+  { code: "53", name: "53 - Béni Abbès", homeFee: 900, deskFee: 750 },
+  { code: "54", name: "54 - Timimoun", homeFee: 900, deskFee: 750 },
+  { code: "55", name: "55 - Touggourt", homeFee: 850, deskFee: 700 },
+  { code: "56", name: "56 - Djanet", homeFee: 1200, deskFee: 950 },
+  { code: "57", name: "57 - In Salah", homeFee: 1200, deskFee: 950 },
+  { code: "58", name: "58 - In Guezzam", homeFee: 1200, deskFee: 950 },
+]
+
+export function getWilayaByCode(code: string): Wilaya | undefined {
+  return wilayas.find((w) => w.code === code)
+}
