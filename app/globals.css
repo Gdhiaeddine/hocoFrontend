@@ -365,3 +365,30 @@ html[dir="rtl"] .font-heading {
     animation: none;
   }
 }
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.97 0.01 152); /* Tailwind muted/bg-zinc-50 color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hoco-green);
+  border-radius: 5px;
+  border: 2px solid oklch(0.97 0.01 152);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hoco-green-dark);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hoco-green) oklch(0.97 0.01 152);
+}
+
+
