@@ -101,11 +101,11 @@ export function Footer() {
             <ul className="mt-4 space-y-4 text-sm text-white/68">
               <li className="flex gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-hoco-green" />
-                +213 550 123 456
+                <span dir="ltr">+213 550 123 456</span>
               </li>
               <li className="flex gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-hoco-green" />
-                support@hoco.dz
+                <span dir="ltr">support@hoco.dz</span>
               </li>
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-hoco-green" />

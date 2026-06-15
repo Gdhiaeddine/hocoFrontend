@@ -20,7 +20,7 @@ import {
   Heart
 } from "lucide-react"
 import { ColorSelector } from "./ColorSelector"
-import { miniBenefits, type ProductDetails } from "./ProductDetailsData"
+import { miniBenefits, type ProductDetails, getProductDetailsBySlug } from "./ProductDetailsData"
 import { QuantitySelector } from "./QuantitySelector"
 import { useCart } from "@/context/CartContext"
 import { useFavorites } from "@/context/FavoritesContext"
@@ -40,11 +40,12 @@ const iconMap: Record<string, any> = {
   Car
 }
 
-export function ProductInfo({ product }: { product: ProductDetails }) {
+export function ProductInfo({ product: propProduct }: { product: ProductDetails }) {
   const router = useRouter()
   const { addToCart } = useCart()
   const { toggleFavorite, isFavorite } = useFavorites()
   const { t, language } = useLanguage()
+  const product = getProductDetailsBySlug(propProduct.slug, language) || propProduct
   const [selectedColor, setSelectedColor] = useState("White")
   const [quantity, setQuantity] = useState(1)
   const [isAdded, setIsAdded] = useState(false)
@@ -80,7 +81,7 @@ export function ProductInfo({ product }: { product: ProductDetails }) {
       initial={{ opacity: 0, x: 28 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full rounded-3xl border border-border bg-white p-5 shadow-[0_30px_90px_-50px_rgba(0,139,58,0.5)] sm:p-7"
+      className="w-full rounded-3xl border border-border bg-white p-5 shadow-[0_30px_90px_-50px_rgba(0,139,58,0.5)] sm:p-7 text-left rtl:text-right"
     >
       <span className="inline-flex rounded-full border border-hoco-green-border bg-hoco-green-light px-3 py-1 text-[10px] font-black uppercase tracking-wide text-hoco-green">
         {product.brand}

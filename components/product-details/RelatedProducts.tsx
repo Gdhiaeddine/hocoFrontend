@@ -1,7 +1,8 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, ChevronLeft, ChevronRight, ShoppingCart, Star } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight, ShoppingCart, Star, Check } from "lucide-react"
 import type { Product } from "@/components/products/ProductData"
 import Link from "next/link"
 import { useLanguage } from "@/context/LanguageContext"
@@ -25,6 +26,15 @@ function MockProduct({ type }: { type: string }) {
 export function RelatedProducts({ related }: { related: Product[] }) {
   const { t } = useLanguage()
   const { addToCart } = useCart()
+  const [addedItems, setAddedItems] = useState<Record<number, boolean>>({})
+
+  const handleAddToCart = (item: Product) => {
+    addToCart(item, 1, item.color || "White")
+    setAddedItems((prev) => ({ ...prev, [item.id]: true }))
+    setTimeout(() => {
+      setAddedItems((prev) => ({ ...prev, [item.id]: false }))
+    }, 1500)
+  }
 
   return (
     <section className="bg-background px-4 py-16 sm:px-6 lg:px-8">
@@ -56,17 +66,19 @@ export function RelatedProducts({ related }: { related: Product[] }) {
               >
                 <Link href={`/products/${item.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${item.name}`} />
 
-                <div className="relative rounded-xl bg-gradient-to-br from-hoco-mint to-zinc-100 p-4">
+                <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-hoco-mint via-white to-zinc-100">
                   {item.badge && <span className="absolute left-3 top-3 z-30 rounded-full bg-hoco-green px-2.5 py-1 text-[10px] font-black text-white">{item.badge}</span>}
-                  <div className="flex h-32 items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                  <div className="relative h-36 w-full transition-transform duration-500 group-hover:scale-110">
                     {item.image ? (
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="h-full w-full object-contain drop-shadow-md"
+                        className="h-full w-full object-cover drop-shadow-[0_8px_16px_rgba(0,0,0,0.12)]"
                       />
                     ) : (
-                      <MockProduct type={item.imageType} />
+                      <div className="flex h-full w-full items-center justify-center p-4">
+                        <MockProduct type={item.imageType} />
+                      </div>
                     )}
                   </div>
                 </div>
@@ -78,11 +90,20 @@ export function RelatedProducts({ related }: { related: Product[] }) {
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      addToCart(item, 1, item.color || "White")
+                      handleAddToCart(item)
                     }}
-                    className="relative z-20 flex h-9 w-9 items-center justify-center rounded-full bg-hoco-green text-white transition-colors hover:bg-hoco-green-dark"
+                    className={`relative z-20 flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ${
+                      addedItems[item.id]
+                        ? "bg-emerald-600 scale-105 text-white"
+                        : "bg-hoco-green text-white hover:bg-hoco-green-dark"
+                    }`}
+                    aria-label={addedItems[item.id] ? "Added to cart" : "Add to cart"}
                   >
-                    <ShoppingCart className="h-4 w-4" />
+                    {addedItems[item.id] ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <ShoppingCart className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </motion.article>

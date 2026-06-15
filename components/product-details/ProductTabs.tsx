@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
-import type { ProductDetails } from "./ProductDetailsData"
+import { type ProductDetails, getProductDetailsBySlug } from "./ProductDetailsData"
 import { useLanguage } from "@/context/LanguageContext"
 
 function SpecsTable({ specifications }: { specifications: [string, string][] }) {
@@ -111,8 +111,9 @@ const getCategoryBullets = (category: string, t: (k: string) => string) => {
   ]
 }
 
-export function ProductTabs({ product }: { product: ProductDetails }) {
-  const { t } = useLanguage()
+export function ProductTabs({ product: propProduct }: { product: ProductDetails }) {
+  const { t, language } = useLanguage()
+  const product = getProductDetailsBySlug(propProduct.slug, language) || propProduct
   const tabs = [t("tabs.description"), t("tabs.specifications")]
   
   // Map active status to standard non-translated strings for local comparison logic

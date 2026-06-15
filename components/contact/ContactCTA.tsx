@@ -29,14 +29,22 @@ export function ContactCTA() {
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-          <button className="group inline-flex items-center justify-center gap-2 rounded-full bg-hoco-green px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-hoco-green/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-hoco-green/40">
+          <a 
+            href="https://wa.me/213550123456"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-hoco-green px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-hoco-green/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-hoco-green/40"
+          >
             <MessageCircle className="h-4.5 w-4.5" />
             {t("contact.cta.whatsapp")}
-          </button>
-          <button className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted">
+          </a>
+          <a 
+            href="tel:+213550123456"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-muted hover:scale-105"
+          >
             <Phone className="h-4.5 w-4.5" />
             {t("contact.cta.call")}
-          </button>
+          </a>
         </div>
       </motion.div>
     </section>

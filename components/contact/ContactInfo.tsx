@@ -27,7 +27,7 @@ export function ContactInfo() {
             <div>
               <h3 className="text-sm font-black text-foreground">{t(card.titleKey)}</h3>
               <p className="mt-1 whitespace-pre-line text-sm leading-6 text-foreground/75">
-                {card.textKey ? t(card.textKey) : card.text}
+                {card.textKey ? t(card.textKey) : <span dir="ltr">{card.text}</span>}
               </p>
               {card.subtextKey && <p className="mt-1 text-xs font-semibold text-muted-foreground">{t(card.subtextKey)}</p>}
             </div>

@@ -29,11 +29,11 @@ export function Breadcrumbs({ category, name }: BreadcrumbsProps) {
         <Link href="/" className="text-hoco-green transition-colors hover:text-hoco-green-dark">
           {t("cart.breadcrumbHome")}
         </Link>
-        <ChevronRight className="h-4 w-4 shrink-0" />
+        <ChevronRight className="h-4 w-4 shrink-0 rtl:rotate-180" />
         <Link href={`/products?category=${encodeURIComponent(category)}`} className="text-hoco-green transition-colors hover:text-hoco-green-dark">
           {displayCategory}
         </Link>
-        <ChevronRight className="h-4 w-4 shrink-0" />
+        <ChevronRight className="h-4 w-4 shrink-0 rtl:rotate-180" />
         <span className="truncate text-foreground">{name}</span>
       </div>
     </section>

@@ -5,10 +5,12 @@ import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import type { ProductDetails } from "./ProductDetailsData"
+import { useLanguage } from "@/context/LanguageContext"
 
 const thumbnails = ["Front angle", "Close-up", "Side view", "Alternate angle", "Packaging"]
 
 function GalleryMockup({ product, view }: { product: ProductDetails; view: number }) {
+  const { language } = useLanguage()
   if (product.image) {
     let transformClass = "scale-100"
     if (view === 1) transformClass = "scale-125 translate-y-4"
@@ -22,7 +24,7 @@ function GalleryMockup({ product, view }: { product: ProductDetails; view: numbe
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="relative mx-auto flex h-80 w-80 sm:h-[480px] sm:w-full sm:max-w-[480px] items-center justify-center"
+        className="relative w-full aspect-square flex items-center justify-center"
       >
         <div className="absolute bottom-8 left-1/2 h-12 w-52 -translate-x-1/2 rounded-full bg-hoco-green/10 blur-2xl" />
         <Image
@@ -30,11 +32,11 @@ function GalleryMockup({ product, view }: { product: ProductDetails; view: numbe
           alt={product.name}
           width={500}
           height={500}
-          className={`h-full w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)] transition-transform duration-500 ${transformClass}`}
+          className={`h-full w-full object-cover drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)] transition-transform duration-500 ${transformClass}`}
         />
         {view === 4 && (
           <div className="absolute right-4 top-16 z-20 rounded-2xl border border-hoco-green-border bg-white/90 px-3 py-2 text-[10px] font-black text-hoco-green shadow-xl backdrop-blur-md">
-            Retail Box Included
+            {language === "ar" ? "العلبة الأصلية متضمنة" : language === "fr" ? "Boîte d'origine incluse" : "Retail Box Included"}
           </div>
         )}
       </motion.div>
@@ -53,7 +55,7 @@ function GalleryMockup({ product, view }: { product: ProductDetails; view: numbe
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
       transition={{ opacity: { duration: 0.3 }, scale: { duration: 0.3 }, y: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" } }}
-      className="relative mx-auto h-80 w-80 sm:h-[480px] sm:w-full sm:max-w-[480px] flex items-center justify-center"
+      className="relative w-full aspect-square flex items-center justify-center"
     >
       <div className="absolute bottom-8 left-1/2 h-12 w-52 -translate-x-1/2 rounded-full bg-zinc-900/14 blur-2xl" />
       
@@ -124,7 +126,7 @@ function GalleryMockup({ product, view }: { product: ProductDetails; view: numbe
 
       {view === 4 && (
         <div className="absolute right-10 top-20 rounded-2xl border border-hoco-green-border bg-white/80 px-3 py-2 text-[10px] font-black text-hoco-green shadow-xl backdrop-blur-md">
-          Retail Box
+          {language === "ar" ? "العلبة الأصلية" : language === "fr" ? "Boîte d'origine" : "Retail Box"}
         </div>
       )}
     </motion.div>
@@ -142,7 +144,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="w-full space-y-8"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-hoco-mint via-white to-zinc-100 p-5 shadow-[0_30px_90px_-48px_rgba(0,139,58,0.55)] sm:p-8">
+      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-hoco-mint via-white to-zinc-100 shadow-[0_30px_90px_-48px_rgba(0,139,58,0.55)]">
         {product.badge && (
           <span className="absolute left-5 top-5 z-20 rounded-full bg-hoco-green px-3 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-lg shadow-hoco-green/25">
             {product.badge}
@@ -159,7 +161,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
               })}
               className="absolute left-5 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-foreground shadow-md transition-colors hover:text-hoco-green"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
             </button>
             <button
               type="button"
@@ -170,7 +172,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
               })}
               className="absolute right-5 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-foreground shadow-md transition-colors hover:text-hoco-green"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-5 w-5 rtl:rotate-180" />
             </button>
           </>
         )}
@@ -182,7 +184,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="relative mx-auto flex h-80 w-80 sm:h-[480px] sm:w-full sm:max-w-[480px] items-center justify-center"
+            className="relative w-full aspect-square flex items-center justify-center"
           >
             <div className="absolute bottom-8 left-1/2 h-12 w-52 -translate-x-1/2 rounded-full bg-hoco-green/10 blur-2xl" />
             <Image
@@ -190,7 +192,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
               alt={product.name}
               width={500}
               height={500}
-              className="h-full w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)]"
+              className="h-full w-full object-cover drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)]"
               priority
             />
           </motion.div>
@@ -216,7 +218,7 @@ export function ProductGallery({ product }: { product: ProductDetails }) {
                   alt={`thumbnail-${index}`}
                   width={80}
                   height={80}
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </button>

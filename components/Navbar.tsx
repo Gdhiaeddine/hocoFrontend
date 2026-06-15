@@ -125,7 +125,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 12 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute left-0 mt-2.5 w-64 rounded-2xl border border-zinc-150 bg-white p-2.5 shadow-xl shadow-zinc-200/40 z-50"
+                        className="absolute start-0 mt-2.5 w-64 rounded-2xl border border-zinc-150 bg-white p-2.5 shadow-xl shadow-zinc-200/40 z-50"
                       >
                         <ul className="space-y-1">
                           {categories.map((cat) => {
@@ -181,7 +181,7 @@ export function Navbar() {
         {/* Desktop right actions */}
         <div className="hidden items-center gap-2 min-[1150px]:flex">
           <form onSubmit={handleSearchSubmit} className="relative">
-            <div className="group flex items-center rounded-full border border-border bg-secondary/50 py-1 pl-4 pr-1 transition-colors focus-within:border-hoco-green">
+            <div className="group flex items-center rounded-full border border-border bg-secondary/50 py-1 ps-4 pe-1 transition-colors focus-within:border-hoco-green">
               <input
                 type="text"
                 placeholder={t("nav.searchPlaceholder")}
@@ -325,7 +325,7 @@ export function Navbar() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="overflow-hidden pl-4 space-y-1"
+                            className="overflow-hidden ps-4 space-y-1"
                           >
                             {categories.map((cat) => {
                               const Icon = cat.icon
@@ -373,7 +373,7 @@ export function Navbar() {
               })}
 
               <form onSubmit={handleSearchSubmit} className="relative w-full">
-                <div className="flex items-center rounded-full border border-border bg-secondary/50 py-1 pl-4 pr-1">
+                <div className="flex items-center rounded-full border border-border bg-secondary/50 py-1 ps-4 pe-1">
                   <input
                     type="text"
                     placeholder={t("nav.searchPlaceholder")}
@@ -440,7 +440,7 @@ function SearchSuggestions({ query, onClose }: { query: string; onClose: () => v
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
-        className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-zinc-150 bg-white p-4 shadow-xl z-50 text-center text-xs text-muted-foreground"
+        className="absolute end-0 top-full mt-2 w-72 rounded-2xl border border-zinc-150 bg-white p-4 shadow-xl z-50 text-center text-xs text-muted-foreground"
       >
         No suggestions found
       </motion.div>
@@ -454,7 +454,7 @@ function SearchSuggestions({ query, onClose }: { query: string; onClose: () => v
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
-        className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-zinc-150 bg-white p-3 shadow-xl z-50 text-left"
+        className="absolute end-0 top-full mt-2 w-72 rounded-2xl border border-zinc-150 bg-white p-3 shadow-xl z-50 text-start"
       >
         <ul className="space-y-4">
           {matchedCategories.length > 0 && (
@@ -469,7 +469,7 @@ function SearchSuggestions({ query, onClose }: { query: string; onClose: () => v
                         router.push(`/products?category=${encodeURIComponent(cat.name)}`)
                         onClose()
                       }}
-                      className="flex w-full items-center gap-2.5 rounded-xl px-2 py-1.5 text-left text-xs font-semibold text-foreground/80 hover:bg-hoco-green-light hover:text-hoco-green transition-colors"
+                      className="flex w-full items-center gap-2.5 rounded-xl px-2 py-1.5 text-start text-xs font-semibold text-foreground/80 hover:bg-hoco-green-light hover:text-hoco-green transition-colors"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-hoco-green" />
                       {getTranslatedCategory(cat.name, t)}
@@ -492,7 +492,7 @@ function SearchSuggestions({ query, onClose }: { query: string; onClose: () => v
                         router.push(`/products/${prod.slug}`)
                         onClose()
                       }}
-                      className="flex w-full items-start gap-2.5 rounded-xl px-2 py-1.5 text-left text-xs font-semibold text-foreground/80 hover:bg-hoco-green-light hover:text-hoco-green transition-colors"
+                      className="flex w-full items-start gap-2.5 rounded-xl px-2 py-1.5 text-start text-xs font-semibold text-foreground/80 hover:bg-hoco-green-light hover:text-hoco-green transition-colors"
                     >
                       <span className="mt-1 h-1 w-1 rounded-full bg-zinc-400" />
                       <div>

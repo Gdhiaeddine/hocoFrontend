@@ -40,10 +40,15 @@ export default function ContactPage() {
               <h3 className="font-heading text-lg font-black text-foreground">{t("contact.immediateHelp")}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{t("contact.immediateHelpDesc")}</p>
             </div>
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full border border-hoco-green bg-white px-6 py-3 text-sm font-black text-hoco-green transition-colors hover:bg-hoco-green hover:text-white">
+            <a 
+              href="https://wa.me/213550123456"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 rounded-full border border-hoco-green bg-white px-6 py-3 text-sm font-black text-hoco-green transition-all hover:bg-hoco-green hover:text-white hover:scale-105"
+            >
               <MessageCircle className="h-4.5 w-4.5" />
               {t("contact.chatNow")}
-            </button>
+            </a>
           </div>
         </div>
       </section>
